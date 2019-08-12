@@ -18,29 +18,17 @@ class Application
       resp.write handle_search(search_term)
     else
       resp.write "Path Not Found"
+
+      
     end
-
-
-
-    if req.path.match(/items/)
-      @@items.each do |item|
-        resp.write "#{item}\n"
-      end
-    elsif req.path.match(/search/)
-      search_term = req.params["q"]
-      resp.write handle_search(search_term)
-    else
-      resp.write "Path Not Found"
-    end
+    
 
     resp.finish
   end
 
   def handle_search(search_term)
-    if @@cart.include?(search_term)
-      return "#{search_term} mil gaya laura"
-    elsif @@items.include?(search_term)
-      return "#{search_term} is one of our items"
+    if @@items.include?(search_term)
+      @@cart.push(search_term)
     else
       return "Couldn't find #{search_term}"
     end
