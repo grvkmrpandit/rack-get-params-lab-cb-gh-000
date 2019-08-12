@@ -2,8 +2,8 @@ class Application
 
   @@items = ["Apples","Carrots","Pears"]
   @@cart=["chuby","busty","bigtits"]
-  
-  
+
+
 
   def call(env)
     resp = Rack::Response.new
@@ -20,7 +20,7 @@ class Application
       resp.write "Path Not Found"
     end
 
-      
+
 
     if req.path.match(/items/)
       @@items.each do |item|
